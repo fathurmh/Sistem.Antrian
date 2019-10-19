@@ -1,0 +1,57 @@
+image: docker:git
+
+services:
+  - docker:dind
+
+variables:
+  DOCKER_DRIVER: overlay
+  CONTAINER_HEROKU: $HEROKU_REGISTRY/$HEROKU_APPNAME/web
+
+stages:
+  - build
+  - dockerize
+  - deploy
+
+build:
+  image: microsoft/dotnet:latest
+  stage: build
+  script:
+    - dotnet restore
+    - dotnet build
+  except:
+    - /^deploy\/.*$/
+  artifacts:
+    paths:
+      - "*/*/bin"
+      - "*/*/obj"
+    expire_in: 20 minutes
+
+dockerize:
+  stage: dockerize
+  script:
+    - docker login -u gitlab-ci-token -p "$CI_BUILD_TOKEN" "$CI_REGISTRY"
+    - docker build -t $CI_REGISTRY_IMAGE:latest .
+    - docker push $CI_REGISTRY_IMAGE:latest
+  except:
+    - /^deploy\/.*$/
+  dependencies:
+    - build
+    
+deploy:development:heroku:
+  stage: deploy
+  services:
+  - docker:dind
+  script:
+    - docker login -u gitlab-ci-token -p "$CI_BUILD_TOKEN" "$CI_REGISTRY"
+    - docker pull $CI_REGISTRY_IMAGE:latest
+    - docker login --username=$HEROKU_USER --password=$HEROKU_API_KEY $HEROKU_REGISTRY
+    - docker tag $CI_REGISTRY_IMAGE:latest $CONTAINER_HEROKU
+    - docker push $CONTAINER_HEROKU
+    - apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community nodejs-npm
+    - npm i -g heroku
+    - heroku container:release web --app $HEROKU_APPNAME
+  environment:
+    name: development
+    url: $DEPLOY_HEROKU_URL
+  dependencies:
+    - dockerize
