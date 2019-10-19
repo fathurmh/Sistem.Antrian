@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build
 WORKDIR /app 
 COPY . ./
-RUN dotnet publish -c Release -o ../out Sistem.Antrian/Sistem.Antrian.csproj
+RUN dotnet publish -c Release -o out Sistem.Antrian/Sistem.Antrian.csproj
 
 FROM mcr.microsoft.com/dotnet/core/runtime:3.0
 WORKDIR /app
