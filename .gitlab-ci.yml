@@ -18,12 +18,10 @@ build:
   script:
     - dotnet restore
     - dotnet build
-  except:
-    - /^deploy\/.*$/
   artifacts:
     paths:
-      - "*/*/bin"
-      - "*/*/obj"
+      - "*/bin"
+      - "*/obj"
     expire_in: 20 minutes
 
 dockerize:
@@ -32,8 +30,6 @@ dockerize:
     - docker login -u gitlab-ci-token -p "$CI_BUILD_TOKEN" "$CI_REGISTRY"
     - docker build -t $CI_REGISTRY_IMAGE:latest .
     - docker push $CI_REGISTRY_IMAGE:latest
-  except:
-    - /^deploy\/.*$/
   dependencies:
     - build
     
