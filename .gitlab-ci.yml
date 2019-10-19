@@ -13,7 +13,7 @@ stages:
   - deploy
 
 build:
-  image: microsoft/dotnet:latest
+  image: mcr.microsoft.com/dotnet/core/sdk:3.0
   stage: build
   script:
     - dotnet restore
@@ -37,7 +37,7 @@ dockerize:
   dependencies:
     - build
     
-deploy:development:heroku:
+deploy:
   stage: deploy
   services:
   - docker:dind
