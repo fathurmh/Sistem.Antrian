@@ -13,7 +13,7 @@ stages:
   - deploy
 
 build:
-  image: mcr.microsoft.com/dotnet/core/sdk:3.0
+  image: microsoft/dotnet:latest
   stage: build
   script:
     - dotnet restore
