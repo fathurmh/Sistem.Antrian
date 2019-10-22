@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Fathcore.EntityFramework;
+using Fathcore.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Simantri.Data;
+using Simantri.Data.Services;
 
 namespace Simantri
 {
@@ -33,6 +33,28 @@ namespace Simantri
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            // DbContext
+            services.AddAuditHandler();
+            services.AddDbContext<SimantriDbContext>(prop =>
+            {
+                prop.UseMySQL(Configuration.GetConnectionString("Default"),
+                    builder => builder.MigrationsAssembly(typeof(Startup).Namespace));
+            });
+
+            // Services
+            services.AddGenericCachedRepository(new CacheSetting("simantri.", 60));
+            services.Scan(scan => scan.FromApplicationDependencies()
+                .AddClasses(classes => classes.AssignableTo(typeof(IDbContext)))
+                    .AsImplementedInterfaces()
+                    .WithScopedLifetime());
+            //    .AddClasses(classes => classes.AssignableTo(typeof(IRepository<>)))
+            //        .AsImplementedInterfaces()
+            //        .WithScopedLifetime()
+            //    .AddClasses(classes => classes.AssignableTo(typeof(ICachedRepository<>)))
+            //        .AsImplementedInterfaces()
+            //        .WithScopedLifetime());
+            services.AddScoped<ConfigService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

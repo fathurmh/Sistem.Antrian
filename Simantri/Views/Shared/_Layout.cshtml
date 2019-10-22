@@ -19,9 +19,9 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: cyan;">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #67e0d7;">
             <div class="container">
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index"><strong>SIMANTRI</strong></a>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">SIMANTRI</a>
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 </ul>
                 <div class="form-inline my-2 my-lg-0">
@@ -30,12 +30,12 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    @*<div class="container">*@
+    <partial name="_CookieConsentPartial" />
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+    @*</div>*@
 
     <footer class="border-top footer text-muted">
         <div class="container">

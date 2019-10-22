@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simantri", "Simantri\Simantri.csproj", "{E54775A0-4789-4A56-BECB-44838F6494A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simantri", "Simantri\Simantri.csproj", "{E54775A0-4789-4A56-BECB-44838F6494A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
