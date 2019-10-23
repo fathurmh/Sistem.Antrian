@@ -6,14 +6,19 @@ a.navbar-brand {
     text-align: center;
     word-break: break-all;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 700;
 }
 
-.welcome {
+.scrolling-box {
+    background-color: #f6f5b7;
+    height:auto;
+}
+
+.scrolling-text {
     font-size: 26px;
     font-weight: 500;
-    white-space: normal;
-    word-break: break-all;
+    /*white-space: normal;*/
+    /*word-break: break-all;*/
 }
 
 /* Sticky footer styles
@@ -63,3 +68,4 @@ body {
   height: 60px;
   line-height: 60px; /* Vertically center the text there */
 }
+

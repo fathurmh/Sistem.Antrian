@@ -2,9 +2,9 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Fathcore.EntityFramework;
-using Simantri.Data.Domain;
+using Simantri.Core.Data.Domain;
 
-namespace Simantri.Data.Services
+namespace Simantri.Core.Data.Services
 {
     public class ConfigService
     {
@@ -20,5 +20,12 @@ namespace Simantri.Data.Services
             var configs = await _configRepository.SelectListAsync(cancellationToken);
             return configs;
         }
+
+        public async Task<string> GetNamaInstansiAsync(CancellationToken cancellationToken = default)
+        {
+            var namaInstansi = await _configRepository.SelectAsync(p => p.Key.Equals(Constants.Config.NamaInstansi), cancellationToken);
+            return namaInstansi.Value.ToUpper();
+        }
+
     }
 }

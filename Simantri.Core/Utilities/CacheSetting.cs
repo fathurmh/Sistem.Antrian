@@ -1,6 +1,6 @@
 ﻿using Fathcore.Infrastructure.Caching;
 
-namespace Simantri.Data
+namespace Simantri.Core.Data
 {
     public class CacheSetting : ICacheSetting
     {

@@ -6,7 +6,7 @@ using Fathcore.EntityFramework.AuditTrail;
 using Fathcore.EntityFramework.Builders;
 using Microsoft.EntityFrameworkCore;
 
-namespace Simantri.Data
+namespace Simantri.Core.Data
 {
     public class SimantriDbContext : BaseDbContext
     {

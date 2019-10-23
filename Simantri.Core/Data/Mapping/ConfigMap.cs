@@ -1,9 +1,9 @@
 ﻿using Fathcore.EntityFramework.Builders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Simantri.Data.Domain;
+using Simantri.Core.Data.Domain;
 
-namespace Simantri.Data.Mapping
+namespace Simantri.Core.Data.Mapping
 {
     public class ConfigMap : EntityTypeConfiguration<Config, int>
     {

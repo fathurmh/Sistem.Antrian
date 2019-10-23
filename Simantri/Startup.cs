@@ -7,8 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Simantri.Data;
-using Simantri.Data.Services;
+using Simantri.Core.Data;
+using Simantri.Core.Data.Services;
+using Simantri.Core.StartupTasks;
 
 namespace Simantri
 {
@@ -48,13 +49,10 @@ namespace Simantri
                 .AddClasses(classes => classes.AssignableTo(typeof(IDbContext)))
                     .AsImplementedInterfaces()
                     .WithScopedLifetime());
-            //    .AddClasses(classes => classes.AssignableTo(typeof(IRepository<>)))
-            //        .AsImplementedInterfaces()
-            //        .WithScopedLifetime()
-            //    .AddClasses(classes => classes.AssignableTo(typeof(ICachedRepository<>)))
-            //        .AsImplementedInterfaces()
-            //        .WithScopedLifetime());
             services.AddScoped<ConfigService>();
+
+            // Startup Task
+            services.AddStartupTask<PopulateConfigTask>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

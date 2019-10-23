@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simantri", "Simantri\Simantri.csproj", "{E54775A0-4789-4A56-BECB-44838F6494A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simantri.Core", "Simantri.Core\Simantri.Core.csproj", "{DFA89522-5898-4F09-909B-9E6F148FF592}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E54775A0-4789-4A56-BECB-44838F6494A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E54775A0-4789-4A56-BECB-44838F6494A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E54775A0-4789-4A56-BECB-44838F6494A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFA89522-5898-4F09-909B-9E6F148FF592}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFA89522-5898-4F09-909B-9E6F148FF592}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFA89522-5898-4F09-909B-9E6F148FF592}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFA89522-5898-4F09-909B-9E6F148FF592}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
