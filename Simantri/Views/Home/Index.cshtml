@@ -1,12 +1,66 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    string namaInstansi = ViewBag.NamaInstansi;
+    string namaOperator = ViewBag.NamaOperator;
+    int totalOperator = ViewBag.TotalOperator;
+    int maxOperator = ViewBag.MaxOperatorPerPage;
+    int totalPages = totalOperator / maxOperator + (totalOperator % maxOperator > 0 ? 1 : 0);
 }
 
 <div class="scrolling-box">
-    <marquee class="scrolling-text" behavior="scroll" direction="left">SELAMAT DATANG DI @ViewBag.NamaInstansi</marquee>
+    <marquee behavior="scroll" direction="left">SELAMAT DATANG DI @namaInstansi</marquee>
 </div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="d-flex">
+    <div class="col-xl-9">
+        @if (totalOperator > maxOperator)
+        {
+            @:<div class="carousel slide" data-ride="carousel" data-interval="3000">
+                @:<div class="carousel-inner">
+                }
+        @for (int i = 0; i < totalPages; i++)
+        {
+            <div class="carousel-item @(i == 0 ? "active" : "") ">
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        @for (int j = i * maxOperator + 1; j <= totalOperator && j <= (i + 1) * maxOperator; j++)
+                        {
+                            <div class="card text-white m-2 custom-card">
+                                <h2 id="@namaOperator-@j" class="card-header text-center">@namaOperator @j</h2>
+                                <div class="card-body align-items-center d-flex justify-content-center">
+                                    <h1 class="card-title text-dark">9999</h1>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+
+        @if (totalOperator > maxOperator)
+        {
+        @:</div>
+    @:</div>
+}
+    </div>
+    <div class="flex-fixed-width-item">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="card text-white m-2 custom-card-side">
+                    <h2 class="card-header text-center text-dark">Antrian Selanjutnya</h2>
+                    <div class="card-body align-items-center justify-content-center">
+                        <div class="alert alert-primary text-center" role="alert">
+                            <h1 class="card-title text-dark">9999</h1>
+                        </div>
+                        <div class="alert alert-primary text-center" role="alert">
+                            <h1 class="card-title text-dark">9999</h1>
+                        </div>
+                        <div class="alert alert-primary text-center" role="alert">
+                            <h1 class="card-title text-dark">9999</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

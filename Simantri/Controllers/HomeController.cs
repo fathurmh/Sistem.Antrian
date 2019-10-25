@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Simantri.Core;
 using Simantri.Core.Data.Services;
 using Simantri.Models;
 
@@ -19,6 +20,9 @@ namespace Simantri.Controllers
         public async Task<IActionResult> Index(CancellationToken cancellationToken)
         {
             ViewBag.NamaInstansi = await _configService.GetNamaInstansiAsync(cancellationToken);
+            ViewBag.NamaOperator = await _configService.GetConfigAsync(Constants.Config.NamaOperator, cancellationToken);
+            ViewBag.TotalOperator = int.TryParse(await _configService.GetConfigAsync(Constants.Config.TotalOperator, cancellationToken), out int totalOperator) ? totalOperator : 0;
+            ViewBag.MaxOperatorPerPage = int.TryParse(await _configService.GetConfigAsync(Constants.Config.MaxOperatorPerPage, cancellationToken), out int maxOperatorPerPage) ? maxOperatorPerPage : 1;
             return View();
         }
 

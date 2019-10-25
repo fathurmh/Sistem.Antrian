@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Fathcore.EntityFramework;
 using Simantri.Core.Data.Domain;
@@ -15,17 +14,16 @@ namespace Simantri.Core.Data.Services
             _configRepository = configRepository;
         }
 
-        public async Task<IEnumerable<Config>> GetConfigAsync(CancellationToken cancellationToken = default)
+        public async Task<string> GetConfigAsync(string configKey, CancellationToken cancellationToken = default)
         {
-            var configs = await _configRepository.SelectListAsync(cancellationToken);
-            return configs;
+            var config = await _configRepository.SelectAsync(p => p.Key.Equals(configKey), cancellationToken);
+            return config.Value;
         }
 
         public async Task<string> GetNamaInstansiAsync(CancellationToken cancellationToken = default)
         {
             var namaInstansi = await _configRepository.SelectAsync(p => p.Key.Equals(Constants.Config.NamaInstansi), cancellationToken);
-            return namaInstansi.Value.ToUpper();
+            return namaInstansi.Value;
         }
-
     }
 }

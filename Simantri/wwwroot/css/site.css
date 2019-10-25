@@ -11,61 +11,99 @@ a.navbar-brand {
 
 .scrolling-box {
     background-color: #f6f5b7;
-    height:auto;
+    height: auto;
 }
 
-.scrolling-text {
-    font-size: 26px;
-    font-weight: 500;
-    /*white-space: normal;*/
-    /*word-break: break-all;*/
-}
+    .scrolling-box > marquee {
+        font-size: 36px;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
+    margin-bottom: 60px;
 }
 
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    height: 60px;
+    line-height: 60px;
+}
+
+.custom-card {
+    width: 21rem;
+    height: 15rem;
+    background-color: #f55bae;
+}
+
+    .custom-card > .card-header {
+        font-size: calc(1em + 1vw);
+        white-space: nowrap;
+        text-transform: uppercase;
+    }
+
+    .custom-card > .card-body {
+        background-color: #f6f5b7;
+    }
+
+        .custom-card > .card-body > h1 {
+            font-size: calc(1em + 5vw);
+        }
+
+.flex-fixed-width-item {
+    flex: 0 0 100px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .flex-fixed-width-item {
+        display:none;
+    }
+}
+
+.custom-card-side {
+    width: 21rem;
+    background-color: #67e0d7;
+}
+
+.alert > h1 {
+    font-size: calc(18px + 3vw);
+}
